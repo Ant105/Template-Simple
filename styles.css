@@ -1,0 +1,49 @@
+/* Тест вложенности (postcss-nested / preset-env) */
+.card {
+  background: oklch(80% 0.05 120); /* современный цвет */
+  padding: 20px;
+  border-radius: 10px;
+
+  &__title {
+    font-size: 24px;
+    color: rgb(50, 50, 50);
+  }
+
+  &__button {
+    background: linear-gradient(90deg, #ff7a18, #af002d 70%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background: linear-gradient(90deg, #af002d, #ff7a18 70%);
+    }
+  }
+}
+
+/* Пример кастомной медиазаписи (preset-env) */
+@custom-media --small-viewport (max-width: 600px);
+
+.card {
+  @media (--small-viewport) {
+    padding: 10px;
+
+    &__title {
+      font-size: 18px;
+    }
+  }
+}
+
+/*-----------------*/
+
+:root {
+  --main-color: red;
+}
+
+button {
+  color: var(--main-color);
+  display: flex;
+  gap: 10px; /* IE11 не поддерживает gap в flex */
+}

@@ -1,0 +1,90 @@
+
+#---------------------------
+### Node modules
+node_modules/
+
+#---------------------------
+### Logs
+*.log
+
+#---------------------------
+### Build and cache
+dist/
+build/
+out/
+.output/
+.cache/
+.parcel-cache/
+.vite/
+.next/
+.nuxt/
+.vercel/
+.netlify/
+.sass-cache/
+.postcss-cache/
+.stylelintcache
+.eslintcache
+.prettiercache
+*.tsbuildinfo
+.turbo/
+
+#---------------------------
+### Temporary files
+*.tmp
+.temp/
+tmp/
+
+#---------------------------
+### OS and system files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+.Spotlight-V100
+.Trashes
+
+#---------------------------
+### IDE and editors
+.vscode/
+!.vscode/extensions.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea/
+.history/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+
+#---------------------------
+### Environment files
+## (Some entries may be redundant to avoid accidentally committing secrets)
+.env
+.env.*
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*~
+.env.*.bak
+!.env.example
+
+#---------------------------
+### Design and assets
+*.psd
+*.ai
+*.xd
+*.sketch
+*.fig
+
+#---------------------------
+### Miscellaneous
+*.bak
+*.old
+*.pid
+*.seed
+*.pid.lock
+*.orig
+coverage/

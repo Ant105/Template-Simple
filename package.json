@@ -1,0 +1,26 @@
+{
+  "name": "cli-build-project",
+  "version": "1.0.0",
+  "browserslist": [
+    ">0.5%",
+    "last 2 versions",
+    "not dead",
+    "not op_mini all"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.28.3",
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "cssnano": "^7.1.2",
+    "html-minifier-next": "^4.8.2",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "postcss-preset-env": "^10.5.0"
+  },
+  "dependencies": {
+    "core-js": "^3.47.0"
+  }
+}
