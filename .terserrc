@@ -1,0 +1,35 @@
+{
+  "ecma": 2017,
+  "compress": {
+    "ecma": 2017,
+    "defaults": true,
+    "inline": false,
+    "arrows": false,
+    "pure_getters": false,
+    "collapse_vars": false,
+    "comparisons": false,
+    "computed_props": false,
+    "hoist_funs": false,
+    "hoist_props": false,
+    "loops": false,
+    "negate_iife": false,
+    "reduce_funcs": false,
+    "reduce_vars": false,
+    "side_effects": false,
+    "typeofs": false,
+    "sequences": false,
+    "drop_console": true,
+    "keep_fargs": true,
+    "passes": 1
+  },
+  "mangle": {
+    "toplevel": false,
+    "keep_classnames": true,
+    "keep_fnames": true
+  },
+  "format": {
+    "ecma": 2017,
+    "comments": false,
+    "beautify": false
+  }
+}

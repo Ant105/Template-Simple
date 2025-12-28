@@ -18,7 +18,8 @@
     "html-minifier-next": "^4.8.2",
     "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
-    "postcss-preset-env": "^10.5.0"
+    "postcss-preset-env": "^10.5.0",
+    "terser": "^5.44.1"
   },
   "dependencies": {
     "core-js": "^3.47.0"

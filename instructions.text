@@ -1,19 +1,24 @@
 ----------Общее---------------------------
+Не забывай менять названия файлов на нужные тебе если у тебя не index.html, styles.css 
+и main.js
 
-Не забывай менять названия файлов на нужные тебе если у тебя не index.html, styles.css и
-main.js
+❗️Не забывай менять пути чтобы все сходилось c конечными названиями файлов, включая
+суффиксы, а также менять названия/суффиксы если они не подходят
 
 ПЕРЕПРОВЕРИТЬ И ПРОДОЛЖИТЬ
-
 ------------------------------------------
-
 
 
 
 
 ----------Минификация HTML---------------------
 Команда (настройки в самой команде):
-npx html-minifier-next --collapse-whitespace --conservative-collapse --remove-comments -o index.min.html index.html
+npx html-minifier-next --collapse-whitespace --conservative-collapse --remove-comments -o index.html index.html
+
+Замечания:
+❗️❗️❗️Как можно заметить я не добавил тут суффикс для аутпута (аутпут тут указан первым)
+это потому что суффикс в index.html может сломать сайт на многих хостингах и я боялся 
+что я забуду его убирать вручную
 
 Качал:
 npm install --save-dev html-minifier-next
@@ -24,7 +29,7 @@ npm install --save-dev html-minifier-next
 
 ----------PostCSS(postcss-preset-env/cssnano)------
 Команда (настройки в конфиге и в browserslist в package.json):
-npx postcss styles.css -o styles.postcss.css
+npx postcss styles.css -o styles.min.css
 
 Замечания:
 Хотя в большенстве своем уровень оптимизации у postcss-preset-env зависит от stage
@@ -38,147 +43,21 @@ npm install postcss-preset-env cssnano --save-dev
 
 
 
+----------Минификация JS---------------
+Команда:
+npx terser main.js --config-file .terserrc -o main.min-three.js
 
-----------❗️❗️Минификация JS---------------
+Замечания:
+❗️Конфиг не подходит для модульного JS, как минимум из-за отсутствия "module": true
+-
+Я использовал .terserrc вместо terser.config.js потому что кажется тут меньше шанс
+получить какую то проблему но тут нельзя будет использовать переменные/циклы и тому
+подобное для сложного конфига и тут JSON синтаксис
+-
+Если будешь использовать terser после babel смотри нужно ли менять значения ecma
 
-
+Качал:
 npm install --save-dev terser
-
-❓npx terser src/app.js -o dist/app.min.js --compress --mangle
-
---compress — удаляет лишние выражения, dead code
---mangle — сокращает имена переменных / функций
-
-Просто минимизировать:
-terser input.js -o output.min.js
-Минимизировать и сжать сильнее:
-terser input.js -o output.min.js -c -m
-
-
-❓❓
-Безопасный вариант compress
-terser input.js -o output.min.js \
-  -c arrows=false,collapse_vars=false,comparisons=false,computed_props=false,\
-hoist_funs=false,hoist_props=false,hoist_vars=false,inline=0,join_vars=false,\
-keep_fargs=true,loops=false,negate_iife=false,properties=false,pure_getters=false,\
-reduce_funcs=false,reduce_vars=false,sequences=0,side_effects=false,typeofs=false \
-  -m toplevel=false
-
-Создайте файл terser.config.json:
-{
-  "compress": {
-    "arrows": false,
-    "collapse_vars": false,
-    "comparisons": false,
-    "computed_props": false,
-    "hoist_funs": false,
-    "hoist_props": false,
-    "hoist_vars": false,
-    🟩"inline": false,
-    "join_vars": false,
-    "keep_fargs": true,
-    "loops": false,
-    "negate_iife": false,
-    "properties": false,
-    🟩"pure_getters": false,
-    "reduce_funcs": false,
-    "reduce_vars": false,
-    "sequences": false,
-    "side_effects": false,
-    "typeofs": false
-  },
-  "mangle": {
-    🟩"toplevel": false
-  }
-}
-Запуск:
-terser input.js -o output.min.js --config-file terser.config.json
-
-❓❓❓❓
-Рекомендуемый баланс «безопасно, но эффективно»
-{
-  "compress": {
-    ❓❓❓❓"defaults": true,
-    "inline": false,
-    "sequences": 10,
-    "passes": 1,
-    "pure_getters": false
-  },
-  "mangle": {
-    "toplevel": false,
-    "keep_classnames": true,
-    "keep_fnames": true
-  }
-}
-
-ДОБАВИТЬ🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
-❓"inline": false
-❓"pure_getters": false
-❗️"mangle": {
-  "toplevel": false
-}
-❓❗️"compress": {
-  "toplevel": false
-}
-❓❗️❗️"mangle": false
-
-❓unsafe: false
-❓"unsafe_arrows": false,
-❓"unsafe_comps": false,
-❓"unsafe_math": false
-
-mangle.properties: false
-❓dead_code: true
-❓drop_debugger: true
-❓"dead_code": true,
-❓"drop_console": false,
-"format": {
-  "comments": false,
-},
-❓"sourceMap": true
-
-Нужно будет проверить минификацию на моих проектах...
-
-WTF
-parse.ecma — что можно читать
-compress.ecma — что можно оптимизировать
-output.ecma — что можно писать
-
-
-ecma НЕ делает код совместимым с браузерами
-Это обещание от тебя Terser'у, а не наоборот.
-Если поставить ecma: 2020, а открыть в IE11 — будет 💥
-
-
-
-
-
-
-Рекомендуемый безопасный конфиг для: Babel + Terser + глобальные функции
-{
-  "compress": {
-    "defaults": true,
-    "inline": false,
-    "sequences": false,
-    "pure_getters": false,
-    "reduce_vars": false,
-    "reduce_funcs": false
-  },
-  "mangle": {
-    "toplevel": false,
-    "keep_classnames": true,
-    "keep_fnames": true
-  }
-}
-
-
-
-npm install --save-dev @babel/core @babel/cli @babel/preset-env
-npm install --save core-js@3
-
-❗️❗️❗️❗️
-СУКА после babel ведь код будет более старым и минификация должна быть безопаснее
-
 ---------------------------------------
 
 
@@ -193,7 +72,9 @@ npx babel main.js -o main.babel.js
 ❗️Babel не всегда нужен, уточняй нужна ли поддержка старых браузеров или только
 современных, во втором случае babel чаще всего не нужен
 -
-❗️Если используешь babel не забывай что его нужно применять до минификации JS
+❗️Если используешь babel не забывай что его нужно применять до минификации JS и что в 
+конфиге для terser иногда нужно поменять значения ecma а также добавить суффикс babel 
+для команды terser
 -
 Если когда то будешь работать с js модулями и решишь использовать эту "недо-сборку"
 знай что я не знаю будет ли оно работать с модулями
