@@ -11,11 +11,11 @@ module.exports = {
         "nesting-rules": true,
       },
     },
-    "doiuse": {
-      onFeatureUsage: info => {
-        process.stderr.write(info.message + '\n');
-      },
-    },
+    // "doiuse": {
+    //   onFeatureUsage: info => {
+    //     process.stderr.write(info.message + '\n');
+    //   },
+    // },
     cssnano: {
       preset: [
         "default",
