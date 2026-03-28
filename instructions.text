@@ -4,6 +4,21 @@
 
 ❗️Не забывай менять пути чтобы все сходилось c конечными названиями файлов, включая
 суффиксы, а также менять названия/суффиксы если они не подходят
+
+
+Может пригодится:
+">0.5%",
+"last 2 versions",
+"not dead",
+"not op_mini all"
+
+"last 2 versions",
+"not dead"
+
+"last 2 versions"
+"not dead"
+"not op_mini all"
+"not kaios > 0"
 ------------------------------------------
 
 
@@ -47,7 +62,6 @@ npm install doiuse --save-dev
 
 
 
-
 ---------Проверка кроссбраузерности/валидности JS/нужен ли Babel-----------
 Команда:
 npx eslint main.js
@@ -69,6 +83,7 @@ npm install --save-dev eslint
 npm install --save-dev eslint-plugin-compat
 npm install --save-dev eslint-config-prettier
 ---------------------------------------------------------------------------
+
 
 
 ----------Минификация JS---------------
