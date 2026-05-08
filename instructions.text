@@ -88,7 +88,7 @@ npm install --save-dev eslint-config-prettier
 
 ----------Минификация JS---------------
 Команда:
-npx terser main.js --config-file .terserrc -o main.min-three.js
+npx terser main.js --config-file .terserrc -o main.min.js
 
 Замечания:
 ❗️Конфиг не подходит для модульного JS, как минимум из-за отсутствия "module": true
